@@ -3,8 +3,8 @@
 # Contributor: Kazutoshi Noguchi <noguchi.kazutosi+lGlcOenS [at] gmail [dot] com>
 # Contributor: Marco Kundt <mrckndt [at] gmail [dot] com>
 
-pkgname=gtk3-nocsd-git
-pkgver=r63.3f91a6b
+pkgname=gtk3-nocsd
+pkgver=r74.c153438
 pkgrel=1
 pkgdesc="A hack to disable gtk+ 3 client side decoration"
 arch=("i686" "x86_64")
@@ -13,6 +13,7 @@ license=("LGPL")
 
 conflicts=("gtk3-nocsd")
 provides=("gtk3-nocsd")
+replaces=("gtk3-classic")
 depends=("gtk3")
 
 makedepends=(
