@@ -17,4 +17,4 @@ jobs:
         id: bootstrap
         uses: Manjaro-Sway/bootstrap-package-actions@master
         with:
-          upstream: "ssh://git@gitlab.manjaro.org:22277/packages/community/gtk3-nocsd.git"
+          upstream: "https://gitlab.manjaro.org/packages/community/gtk3-nocsd.git"
