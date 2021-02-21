@@ -20,7 +20,9 @@ jobs:
     - 
       name: add ssh pk
       if: ${{ contains(env.UPSTREAM_GIT, 'ssh') }}
-      run: mkdir -p ~/.ssh && echo "${{ secrets.SSH_BASE64 }}" | base64 -d >~/.ssh/id_rsa
+      run: |
+        [ -f .github/additional_known_hosts ] && cat .github/additional_known_hosts >> ~/.ssh/known_hosts
+        mkdir -p ~/.ssh && echo "${{ secrets.SSH_BASE64 }}" | base64 -d >~/.ssh/id_rsa
     - 
       name: check if behind upstream
       run: |
