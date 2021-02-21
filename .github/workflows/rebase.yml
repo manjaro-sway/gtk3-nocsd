@@ -6,7 +6,7 @@ on:
     - cron:  '*/30 * * * *'
   
 env:
-  UPSTREAM_GIT: ssh://git@gitlab.manjaro.org:22277/packages/community/gtk3-nocsd.git
+  UPSTREAM_GIT: https://gitlab.manjaro.org/packages/community/gtk3-nocsd.git
 
 jobs:
   rebase:
@@ -14,7 +14,7 @@ jobs:
     steps:
     - 
       name: checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.3.4
       with:
         token: ${{ secrets.PUSH_AND_TRIGGER }}
     - 
@@ -22,7 +22,7 @@ jobs:
       if: ${{ contains(env.UPSTREAM_GIT, 'ssh') }}
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_BASE64 }}" | base64 -d >~/.ssh/id_rsa
+        echo "${{ secrets.SSH_BASE64 }}" | base64 -d >~/.ssh/id_rsa && chmod 400 ~/.ssh/id_rsa
         [ -f .github/additional_known_hosts ] && cat .github/additional_known_hosts >> ~/.ssh/known_hosts
     - 
       name: check if behind upstream
