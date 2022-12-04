@@ -28,6 +28,7 @@ jobs:
     - 
       name: check if behind upstream
       run: |
+        if [ "$UPSTREAM_GIT" == "https://gitlab.manjaro.org/packages/community/gtk3-nocsd.git" ];then exit 0;fi
         git remote add upstream ${UPSTREAM_GIT}
         git fetch upstream
         git config --global user.email "info@manjaro-sway.download"
